@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'note_database.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() => runApp(MyApp()); //若只要return一項可以把return改成=>
 
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
             Expanded(
               child: ListView.builder(
                 controller: _titleController,
-                itemCount: noteList.length ~/ 2, //除法取整數
+                itemCount: noteList.length, //除法取整數
                 itemBuilder: (context, index) {
                   final listIndex = index;
                   final note = noteList[listIndex];
@@ -65,21 +66,11 @@ class _MyAppState extends State<MyApp> {
                     title: note[0],
                     description: note[1],
                     index: listIndex,
-                  );
-                },
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                controller: _descriptionController,
-                itemCount: noteList.length ~/ 2,
-                itemBuilder: (context, index) {
-                  final listIndex = index + (noteList.length ~/ 2);
-                  final note = noteList[listIndex];
-                  return NoteCard(
-                    title: note[0],
-                    description: note[1],
-                    index: listIndex,
+                    remove: () {
+                      setState(() {
+                        noteList.removeAt(index);
+                      });
+                    },
                   );
                 },
               ),
@@ -98,12 +89,14 @@ class NoteCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.index,
+    required this.remove,
   });
 
   //final String? title;//可以寫入NULL的string
   final String title;
   final String description;
   final int index;
+  final VoidCallback remove;
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +112,31 @@ class NoteCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //Text(title ??'default_T', style: kTitleTextStyle),//若NULL則寫入default
-          Text(title, style: kTextStyle),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(title, style: kTextStyle),
+              IconButton(
+                onPressed: remove,
+                icon: Icon(FontAwesomeIcons.trash, color: Colors.grey),
+              ),
+            ],
+          ),
           Text(description, style: kDesTextStyle),
         ],
       ),
     );
   }
 }
+/*
+git+(以下指令)
+init
+add . //僅加入目前路徑以下
+add --all//加入所有
+commit -m"message"
+status
+log
+log --oneline//用一行的形式顯示
+push//推到網路端
+pull
+ */
