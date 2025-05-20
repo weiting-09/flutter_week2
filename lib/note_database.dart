@@ -1,0 +1,23 @@
+
+final List<List<String>> noteList = [
+  ['Meeting', 'Prepare all documents for Monday meeting'],
+  ['Groceries', 'Buy milk, eggs, bread, and vegetables'],
+  ['Project', 'Finalize user interface and check responsiveness'],
+  ['Workout', 'Complete 30 minutes of cardio and stretching'],
+  ['Call', 'Call mom to discuss weekend travel plans'],
+  ['Book', 'Read chapter 3 and summarize key points'],
+  ['Travel', 'Pack clothes, charger, and passport'],
+  ['Budget', 'Review monthly expenses and update spreadsheet'],
+  ['Dinner', 'Cook pasta and make a simple salad'],
+  ['Slides', 'Create presentation slides for Thursday’s demo'],
+  ['Email', 'Reply to all pending client and team emails'],
+  ['Backup', 'Backup important files to cloud storage'],
+  ['Design', 'Sketch homepage layout for new website'],
+  ['Shopping', 'Buy new shoes and summer clothes'],
+  ['Laundry', 'Wash and fold clothes before the evening'],
+  ['Report', 'Write weekly summary report for manager'],
+  ['Plan', 'Schedule events for next week in calendar'],
+  ['Photos', 'Organize trip photos into folders'],
+  ['Fix Bug', 'Resolve login issue in authentication module'],
+  ['Learn', 'Watch Flutter tutorials and take notes'],
+];
